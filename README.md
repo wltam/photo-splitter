@@ -39,9 +39,9 @@ The script processes all images in the specified input folder, extracts individu
 
 ### 3. Example Usage
 
-Here’s an example using the attached image (`001.jpg`):
+Here’s an example using the attached image (`Scanned.jpg`):
 
-1. Place `001.jpg` in a folder named `input_folder`.
+1. Place `Scanned.jpg` in a folder named `input_folder`.
 2. Run the script with:
 
    ```python
@@ -49,7 +49,7 @@ Here’s an example using the attached image (`001.jpg`):
    ```
 
 3. The script will:
-   - Extract each photo from `001.jpg`.
+   - Extract each photo from `Scanned.jpg`.
    - Save the extracted photos in `output_folder`.
    - Generate debug images showing detected regions and intermediate processing steps.
 
@@ -59,13 +59,13 @@ After running the script, your output folder will look like this:
 
 ```
 output_folder/
-├── 001_photo_1.jpg          # First extracted photo
-├── 001_photo_2.jpg          # Second extracted photo
-├── 001_photo_3.jpg          # Third extracted photo
-├── 001_detected_regions.jpg # Debug image showing detected regions
-├── 001_enhanced_gray.jpg    # Enhanced grayscale version of input image
-├── 001_edges.jpg            # Edge detection result
-└── 001_dilated_edges.jpg    # Dilated edges result
+├── Scanned_photo_1.jpg          # First extracted photo
+├── Scanned_photo_2.jpg          # Second extracted photo
+├── Scanned_photo_3.jpg          # Third extracted photo
+├── Scanned_detected_regions.jpg # Debug image showing detected regions
+├── Scanned_enhanced_gray.jpg    # Enhanced grayscale version of input image
+├── Scanned_edges.jpg            # Edge detection result
+└── Scanned_dilated_edges.jpg    # Dilated edges result
 ```
 
 ### 4. Adjust Parameters
@@ -87,5 +87,5 @@ If some photos aren't detected or extra regions are included, adjust these param
    ![Photo 1](output_folderPhoto 2**:
    ![Photo 2](output_folderPhoto 3**:
    ![Photo 3](output_folderDebug Image**:
-   ![Debug Image](output_folder/001_dete free to modify this script for your specific needs!
+   ![Debug Image](output_folder/Scanned_dete free to modify this script for your specific needs!
 
