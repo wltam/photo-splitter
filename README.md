@@ -39,7 +39,7 @@ The script processes all images in the specified input folder, extracts individu
 
 ### 3. Example Usage
 
-Here’s an example using the attached image (`Scanned.jpg`):
+Here’s an example using the attached image (![`Scanned.jpg`](https://github.com/wltam/photo-splitter/blob/main/Scanned.jpg)):
 
 1. Place `Scanned.jpg` in a folder named `input_folder`.
 2. Run the script with:
@@ -80,7 +80,7 @@ If some photos aren't detected or extra regions are included, adjust these param
 
 ### Input Image
 
-![Input Imag
+![Input Image] 
 ### Output Photos (Saved in `output_folder/`)
 
 1. **Photo 1**:
