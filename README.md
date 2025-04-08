@@ -39,7 +39,7 @@ The script processes all images in the specified input folder, extracts individu
 
 ### 3. Example Usage
 
-Here’s an example using the attached image (![`Scanned.jpg`](https://github.com/wltam/photo-splitter/blob/main/Scanned.jpg)):
+Here’s an example using the attached image ![Scanned.jpg]
 
 1. Place `Scanned.jpg` in a folder named `input_folder`.
 2. Run the script with:
@@ -80,12 +80,29 @@ If some photos aren't detected or extra regions are included, adjust these param
 
 ### Input Image
 
-![Input Image] 
+![Scanned.jpg]
 ### Output Photos (Saved in `output_folder/`)
 
 1. **Photo 1**:
-   ![Photo 1](output_folderPhoto 2**:
-   ![Photo 2](output_folderPhoto 3**:
-   ![Photo 3](output_folderDebug Image**:
-   ![Debug Image](output_folder/Scanned_dete free to modify this script for your specific needs!
+   ![Photo 1](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_1.jpg)
+2. **Photo 2**:
+   ![Photo 2](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_2.jpg)
+3. **Photo 3**:
+   ![Photo 3](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_3.jpg)
+4. **Photo 4**:
+   ![Photo 3](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_4.jpg)
 
+**Scanned_detected_regions.jpg # Debug image showing detected regions**
+![Scanned_detected_regions.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_detected_regions.jpg)
+
+**Scanned_enhanced_gray.jpg    # Enhanced grayscale version of input image.**
+![Scanned_enhanced_gray.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_enhanced_gray.jpg)
+
+**Scanned_edges.jpg            # Edge detection result**
+![Scanned_edges.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_dilated_edges.jpg)
+
+**Scanned_dilated_edges.jpg    # Dilated edges result**
+![Scanned_dilated_edges.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_dilated_edges.jpg)
+
+
+[Scanned.jpg]: https://github.com/wltam/photo-splitter/blob/main/Scanned.jpg
