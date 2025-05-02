@@ -1,108 +1,71 @@
-# Photo Splitter Script
+# Photo Extraction Tool User Guide
 
-This script detects and extracts individual photos from a scanned page containing multiple photos. It uses OpenCV for edge detection and contour analysis to identify photo regions and save them as separate files.
+## Overview
+This tool automatically detects and extracts photos from scanned documents or images containing multiple photographs. It uses computer vision techniques to identify distinct photo regions and save them as separate image files.
 
 ## Features
-
-- Automatically detects photo regions in a scanned page.
-- Extracts individual photos and saves them as separate files.
-- Generates debug images showing detected regions and intermediate processing steps.
+- Detects rectangular photo regions within larger images
+- Filters regions based on size, aspect ratio, and other parameters
+- Extracts each detected photo with optional margins
+- Creates visualization of detected regions (optional)
+- Customizable processing parameters
 
 ## Requirements
+- Python 3.x
+- OpenCV (cv2)
+- NumPy
 
-- Python 3.6 or higher
-- Required libraries:
-  - OpenCV
-  - NumPy
+## Usage Instructions
 
-Install the required libraries using:
-
-```bash
-pip install opencv-python numpy
+### 1. Basic Usage
+```python
+process_folder('input_folder_path', 'output_folder_path')
 ```
 
-## How to Use
-
-### 1. Prepare Your Input Folder
-
-Place all scanned pages (images) in a folder, e.g., `input_folder`. Ensure the images are in `.jpg`, `.jpeg`, or `.png` format.
-
-### 2. Run the Script
-
-Save the Python script as `photo_splitter.py`. Then, run the script with the following command:
-
-```bash
-python photo_splitter.py
+Example:
+```python
+process_folder('C:/Users/Documents/Scanner/', 'C:/Users/Documents/Scanner/extracted')
 ```
 
-The script processes all images in the specified input folder, extracts individual photos, and saves them in the output folder.
+### 2. Adjustable Parameters
+The script includes several parameters you can modify to optimize detection for your specific images:
 
-### 3. Example Usage
+#### Size Filters
+- `MIN_AREA`: Minimum area in pixels (default: 20,000)
+- `MIN_AREA_RATIO`: Minimum ratio of region area to image area (default: 1%)
+- `MAX_AREA_RATIO`: Maximum ratio of region area to image area (default: 99%)
+- `MIN_DIMENSION`: Minimum width/height in pixels (default: 100)
+- `MAX_ASPECT_RATIO_DIFF`: Maximum ratio between long and short sides (default: 5.0)
 
-Here’s an example using the attached image ![Scanned.jpg]
+#### Processing Parameters
+- `MARGIN`: Extra pixels to include around detected regions (default: 5)
+- `CANNY_LOW_THRESHOLD`/`CANNY_HIGH_THRESHOLD`: Edge detection sensitivity
+- `CLAHE_CLIP_LIMIT`/`CLAHE_TILE_SIZE`: Contrast enhancement settings
+- Various filter parameters for noise reduction
 
-1. Place `Scanned.jpg` in a folder named `input_folder`.
-2. Run the script with:
+#### Output Options
+- `SAVE_DETECTED_REGIONS`: Save images with detection boxes (default: True)
+- `SAVE_INTERMEDIATE_IMAGES`: Save processing steps for debugging (default: False)
 
-   ```python
-   process_folder('input_folder', 'output_folder')
-   ```
+### 3. Output Files
+The tool generates:
+- Individual extracted photos named `[original_filename]_photo_[number].jpg`
+- Visualization images showing detected regions (if enabled)
+- Intermediate processing images (if enabled)
 
-3. The script will:
-   - Extract each photo from `Scanned.jpg`.
-   - Save the extracted photos in `output_folder`.
-   - Generate debug images showing detected regions and intermediate processing steps.
+## Tips for Best Results
+- Ensure good lighting and contrast in your original scans
+- Adjust `MIN_AREA` based on the size of photos you want to detect
+- If detecting too many false regions, increase `MIN_AREA` or `MIN_DIMENSION`
+- If missing photos, try reducing thresholds or increasing `DILATION_ITERATIONS`
 
-### Example Output Structure
+## Troubleshooting
+- If no photos are detected, try lowering the `MIN_AREA` and `MIN_AREA_RATIO`
+- If incorrect regions are detected, try increasing `MIN_AREA` or adjusting edge detection parameters
+- For blurry or low-contrast scans, adjust the `CLAHE_CLIP_LIMIT` and Canny thresholds
 
-After running the script, your output folder will look like this:
-
-```
-output_folder/
-├── Scanned_photo_1.jpg          # First extracted photo
-├── Scanned_photo_2.jpg          # Second extracted photo
-├── Scanned_photo_3.jpg          # Third extracted photo
-├── Scanned_detected_regions.jpg # Debug image showing detected regions
-├── Scanned_enhanced_gray.jpg    # Enhanced grayscale version of input image
-├── Scanned_edges.jpg            # Edge detection result
-└── Scanned_dilated_edges.jpg    # Dilated edges result
-```
-
-### 4. Adjust Parameters
-
-If some photos aren't detected or extra regions are included, adjust these parameters in the script:
-
-- **`min_area`**: Minimum area of a region to be considered a photo (default: `20000`).
-- **Canny thresholds**: Adjust `30` and `100` in `cv2.Canny()` for finer edge detection.
-- **Margins**: Modify the `margin` variable to include more or less space around detected photos.
-
-## Example Input and Output
-
-### Input Image
-
-![Scanned.jpg]
-### Output Photos (Saved in `output_folder/`)
-
-1. **Photo 1**:
-   ![Photo 1](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_1.jpg)
-2. **Photo 2**:
-   ![Photo 2](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_2.jpg)
-3. **Photo 3**:
-   ![Photo 3](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_3.jpg)
-4. **Photo 4**:
-   ![Photo 3](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_photo_4.jpg)
-
-**Scanned_detected_regions.jpg # Debug image showing detected regions**
-![Scanned_detected_regions.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_detected_regions.jpg)
-
-**Scanned_enhanced_gray.jpg    # Enhanced grayscale version of input image.**
-![Scanned_enhanced_gray.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_enhanced_gray.jpg)
-
-**Scanned_edges.jpg            # Edge detection result**
-![Scanned_edges.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_dilated_edges.jpg)
-
-**Scanned_dilated_edges.jpg    # Dilated edges result**
-![Scanned_dilated_edges.jpg](https://github.com/wltam/photo-splitter/blob/main/extracted/Scanned_dilated_edges.jpg)
-
-
-[Scanned.jpg]: https://github.com/wltam/photo-splitter/blob/main/Scanned.jpg
+## Example Workflow
+1. Scan multiple photos on a flatbed scanner
+2. Save the scan to your input folder
+3. Run the script to automatically extract individual photos
+4. Check the output folder for the extracted images
